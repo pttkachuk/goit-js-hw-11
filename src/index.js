@@ -29,7 +29,7 @@ async function handlerOnSubmit(event) {
     event.preventDefault();
     searchQuery = event.currentTarget.searchQuery.value;
     currentPage = 1;
-    if (searchQuery === '') {
+    if (!searchQuery) {
         return;
     }
     const responce = await fetchImages(searchQuery, currentPage);
@@ -46,7 +46,7 @@ async function handlerOnSubmit(event) {
             renderCardImage(responce.hits);
             lightbox.refresh();
         }
-        if (responce.totalHits === 0) {
+        if (!responce.totalHits) {
             elements.galleryList.innerHTML = ''
             Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
             elements.loadMoreBtn.hidden = true;
