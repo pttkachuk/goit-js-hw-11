@@ -44,15 +44,6 @@ async function handlerOnSubmit(event) {
             elements.galleryList.innerHTML = '';
             renderCardImage(responce.hits);
             lightbox.refresh();
-
-            const { height: cardHeight } = document
-                .querySelector(".gallery")
-                .firstElementChild.getBoundingClientRect();
-
-            window.scrollBy({
-                top: cardHeight * -100,
-                behavior: "smooth",
-            });
         }
         if (responce.totalHits === 0) {
             elements.galleryList.innerHTML = ''
@@ -70,6 +61,14 @@ async function handlerOnBtnClick() {
     currentPage += 1;
     const responce = await fetchImages(searchQuery, currentPage);
     renderCardImage(responce.hits);
+    const { height: cardHeight } = document
+        .querySelector(".gallery")
+        .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+        top: 500,
+        behavior: "smooth",
+    });
     lightbox.refresh();
     currentHits += responce.hits.length;
     if (currentHits === responce.totalHits) {
@@ -87,19 +86,19 @@ function renderCardImage(array) {
         </a>
   <div class="info">
     <p class="info-item">
-      <b>👍:</b>
+       <b>Likes</b>
       ${likes}
     </p>
     <p class="info-item">
-      <b>👀:</b>
+    <b>Views</b>
       ${views}
     </p>
     <p class="info-item">
-      <b>📝:</b>
+      <b>Comments</b>
       ${comments}
     </p>
     <p class="info-item">
-      <b>📩:</b>
+      <b>Downloads</b>
       ${downloads}
     </p>
   </div>
