@@ -50,10 +50,9 @@ input{
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 10px;
+  padding-top: 10px;
 }
 .photo-card {
-  // flex-basis: calc((100% - 3 * 20px) / 4);
   flex-basis: calc(100% / 5 - 20px);
   border: 1px solid black;
   border-radius: 3px;
