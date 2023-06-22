@@ -4,21 +4,78 @@ body{
   line-height: 1.5;
   background-color: #fff;
   color: #2f2f37;
-  max-width: 960px;
-  padding: 16px;
+  
 }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+a{
+  text-decoration: none;
+}
+
 input{
   max-width: 500px;
   padding: 5px 10px;
-  border: 2px solid black;
+  border: none;
   border-radius: 3px;
  
 }
 
 .btn{
+  font-size: 14px;
   padding: 5px 10px;
-  border: 1px solid black;
+  border: none;
   border-radius: 3px;
   cursor: pointer;
+  transition-duration: 0.4s;
 }
 
+.btn:hover{
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+}
+
+.search-form{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 0;
+  background-color: green;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}
+.photo-card {
+  flex-basis: calc((100% - 3 * 20px) / 4);
+  border: 1px solid black;
+  border-radius: 3px;
+  color: #000000;
+}
+.photo-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.load-btn-container{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

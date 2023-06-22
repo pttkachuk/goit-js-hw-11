@@ -20,6 +20,8 @@ let currentPage = 1;
 let currentHits = 0;
 let searchQuery = '';
 
+elements.loadMoreBtn.hidden = true;
+
 //add event listener and function on search form
 elements.searchForm.addEventListener('submit', handlerOnSubmit);
 async function handlerOnSubmit(event) {
@@ -32,9 +34,9 @@ async function handlerOnSubmit(event) {
     const responce = await fetchImages(searchQuery, currentPage);
     currentHits = responce.hits.length;
     if (responce.totalHits > 40) {
-        elements.loadMoreBtn.classList.remove('is-hidden');
+        elements.loadMoreBtn.hidden = false;
     } else {
-        elements.loadMoreBtn.classList.add('is-hidden');
+        elements.loadMoreBtn.hidden = true;
     }
     try {
         if (responce.totalHits > 0) {
@@ -55,7 +57,7 @@ async function handlerOnSubmit(event) {
         if (responce.totalHits === 0) {
             elements.galleryList.innerHTML = ''
             Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-            elements.loadMoreBtn.classList.add('is-hidden')
+            elements.loadMoreBtn.hidden = true;
         }
     } catch (error) {
         console.log(error);
@@ -71,7 +73,7 @@ async function handlerOnBtnClick() {
     lightbox.refresh();
     currentHits += responce.hits.length;
     if (currentHits === responce.totalHits) {
-        elements.loadMoreBtn.classList.add('is-hidden')
+        elements.loadMoreBtn.hidden = true;
     }
 }
 
@@ -85,19 +87,19 @@ function renderCardImage(array) {
         </a>
   <div class="info">
     <p class="info-item">
-      <b>Likes</b>
+      <b>👍:</b>
       ${likes}
     </p>
     <p class="info-item">
-      <b>Views</b>
+      <b>👀:</b>
       ${views}
     </p>
     <p class="info-item">
-      <b>Comments</b>
+      <b>📝:</b>
       ${comments}
     </p>
     <p class="info-item">
-      <b>Downloads</b>
+      <b>📩:</b>
       ${downloads}
     </p>
   </div>
