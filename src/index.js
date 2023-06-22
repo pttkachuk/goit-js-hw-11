@@ -77,7 +77,7 @@ async function handlerOnBtnClick() {
     }
     maxPage = responce.totalHits / 40;
     if (currentPage > maxPage) {
-        Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+        Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
         elements.loadMoreBtn.hidden = true;
     }
 }
