@@ -19,6 +19,7 @@ const elements = {
 let currentPage = 1;
 let currentHits = 0;
 let searchQuery = '';
+let maxPage = 0;
 
 elements.loadMoreBtn.hidden = true;
 
@@ -72,6 +73,11 @@ async function handlerOnBtnClick() {
     lightbox.refresh();
     currentHits += responce.hits.length;
     if (currentHits === responce.totalHits) {
+        elements.loadMoreBtn.hidden = true;
+    }
+    maxPage = responce.totalHits / 40;
+    if (currentPage > maxPage) {
+        Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
         elements.loadMoreBtn.hidden = true;
     }
 }
